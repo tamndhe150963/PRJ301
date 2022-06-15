@@ -8,6 +8,18 @@
         <servlet-name>CreateStudent</servlet-name>
         <servlet-class>context.CreateStudent</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddServlet</servlet-name>
+        <servlet-class>Controller.AddServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteServlet</servlet-name>
+        <servlet-class>Controller.DeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateServlet</servlet-name>
+        <servlet-class>Controller.UpdateServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListStudent</servlet-name>
         <url-pattern>/list-student</url-pattern>
@@ -15,6 +27,18 @@
     <servlet-mapping>
         <servlet-name>CreateStudent</servlet-name>
         <url-pattern>/create-student</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddServlet</servlet-name>
+        <url-pattern>/add</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteServlet</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateServlet</servlet-name>
+        <url-pattern>/update</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

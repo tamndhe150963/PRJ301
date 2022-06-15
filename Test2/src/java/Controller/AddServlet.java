@@ -5,7 +5,6 @@
 
 package Controller;
 
-import modal.Student;
 import dao.StudentDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,12 +13,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
+import modal.Student;
 
 /**
  *
  * @author DELL
  */
-public class ListStudent extends HttpServlet {
+public class AddServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -45,14 +45,7 @@ public class ListStudent extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-         StudentDAO dao = new StudentDAO();
-         List<Student> list = dao.getAllStudents();
-         PrintWriter out = response.getWriter(); ///test in ra man hinh
-         request.setAttribute("listS", list);
-         request.getRequestDispatcher("listStudent.jsp").forward(request, response);
-//         for (Student student : list) {
-//            out.print(student);
-//        }
+        response.sendRedirect("add.jsp");
     } 
 
     /** 
@@ -65,7 +58,16 @@ public class ListStudent extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        String age = request.getParameter("age");
+        String point = request.getParameter("point");
+        Student S = new Student(id, name, age, point);
+        StudentDAO dao = new StudentDAO();
+        dao.insert(S);
+        List<Student> list = dao.getAllStudents();
+        request.setAttribute("listS", list);
+        request.getRequestDispatcher("listStudent.jsp").forward(request, response);
     }
 
     /** 

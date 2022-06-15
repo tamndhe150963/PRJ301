@@ -1,12 +1,17 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package context;
-
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-
+/**
+ *
+ * @author DELL
+ */
 public class DBcontext {
-    
     /*USE BELOW METHOD FOR YOUR DATABASE CONNECTION FOR BOTH SINGLE AND MULTILPE SQL SERVER INSTANCE(s)*/
     /*DO NOT EDIT THE BELOW METHOD, YOU MUST USE ONLY THIS ONE FOR YOUR DATABASE CONNECTION*/
      public Connection getConnection()throws Exception {
@@ -22,7 +27,7 @@ public class DBcontext {
     /*Insert your other code right after this comment*/
     /*Change/update information of your database connection, DO NOT change name of instance variables in this class*/
     private final String serverName = "DESKTOP-ORFHPIA\\SQLEXPRESS";
-    private final String dbName = "test";
+    private final String dbName = "PRJ301_Slot1_246";
     private final String portNumber = "1433";
     private final String instance="";//LEAVE THIS ONE EMPTY IF YOUR SQL IS A SINGLE INSTANCE
     private final String userID = "sa";

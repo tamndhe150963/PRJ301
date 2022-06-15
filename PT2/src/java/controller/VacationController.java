@@ -3,23 +3,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package Controller;
+package controller;
 
-import modal.Student;
-import dao.StudentDAO;
+import dal.EmpDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
+import java.util.ArrayList;
+import model.Dept;
+import model.Emp;
 
 /**
  *
  * @author DELL
  */
-public class ListStudent extends HttpServlet {
+@WebServlet(name="VacationController", urlPatterns={"/request/insert"})
+public class VacationController extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -45,14 +48,10 @@ public class ListStudent extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-         StudentDAO dao = new StudentDAO();
-         List<Student> list = dao.getAllStudents();
-         PrintWriter out = response.getWriter(); ///test in ra man hinh
-         request.setAttribute("listS", list);
-         request.getRequestDispatcher("listStudent.jsp").forward(request, response);
-//         for (Student student : list) {
-//            out.print(student);
-//        }
+        EmpDAO dao = new EmpDAO();
+        ArrayList<Emp> emps = Emp.list();
+        request.setAttribute("emps", emps);
+        request.getRequestDispatcher("vacation.jsp").forward(request, response);
     } 
 
     /** 
@@ -65,7 +64,7 @@ public class ListStudent extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+       
     }
 
     /** 

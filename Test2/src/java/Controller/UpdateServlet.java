@@ -5,7 +5,6 @@
 
 package Controller;
 
-import modal.Student;
 import dao.StudentDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,12 +13,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
+import modal.Student;
 
 /**
  *
  * @author DELL
  */
-public class ListStudent extends HttpServlet {
+public class UpdateServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -31,7 +31,18 @@ public class ListStudent extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet UpdateServlet</title>");  
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet UpdateServlet at " + request.getContextPath () + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -45,14 +56,11 @@ public class ListStudent extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-         StudentDAO dao = new StudentDAO();
-         List<Student> list = dao.getAllStudents();
-         PrintWriter out = response.getWriter(); ///test in ra man hinh
-         request.setAttribute("listS", list);
-         request.getRequestDispatcher("listStudent.jsp").forward(request, response);
-//         for (Student student : list) {
-//            out.print(student);
-//        }
+                String id = request.getParameter("id");
+//        PrintWriter out = response.getWriter();
+//        out.print(id);
+        request.setAttribute("id", id);
+        request.getRequestDispatcher("update.jsp").forward(request, response);
     } 
 
     /** 
@@ -65,7 +73,17 @@ public class ListStudent extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        String age = request.getParameter("age");
+        String point = request.getParameter("point");
+        
+        Student S = new Student(id, name, age, point);
+        StudentDAO dao = new StudentDAO();
+        dao.update(S);
+        List<Student> list = dao.getAllStudents();
+        request.setAttribute("listS", list);
+        request.getRequestDispatcher("listStudent.jsp").forward(request, response);
     }
 
     /** 
