@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Student Point</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h2><center>FPT University</center></h2>
+    <h3>Student name: Nguyen Van A</h3>
+    <h3>Student ID: HE150963</h3>
+    <h3>Subjects:</h3> 
+    <h5><select>
+        <option>PRJ</option>
+        <option>PRF</option>
+        <option>PRO</option>
+        <option>MAD</option>
+        <option>MAE</option>
+        </select></h5>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Test</th>
+                <th>Lab</th>
+                <th>Assignment</th>
+                <th>PE</th>
+                <th>FE</th>
+                <th>Function</th>
+            </tr>
+        </thead>
+        <tr>
+            <td><center>6</center></td>
+            <td><center>7</center></td>
+            <td><center>5</center></td>
+            <td><center>6</center></td>
+            <td><center>8</center></td>
+            <td><a href="report?id=${s.id}">Report</a></td>
+        </tr>
+        </table>
+    <input type="submit" value="Return">
+    </body>
+</html>
