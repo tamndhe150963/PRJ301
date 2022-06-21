@@ -5,12 +5,17 @@
 package model;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  *
  * @author DELL
  */
 public class Emp {
+
+    public static ArrayList<Emp> list() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     private int id;
     private String name;
     private boolean gender;
