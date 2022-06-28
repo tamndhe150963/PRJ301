@@ -1,12 +1,14 @@
 ﻿
 - Hiện điểm của từng sinh viên theo sid lấy từ trang login
-SELECT Test, Lab, Assignment, PE, FE FROM [Assessment-Student] where sid = 1
+SELECT asname, Course, Test, Lab, Assignment, PE, FE FROM [Assessment-Student] where sid = 1
+- Hiển thị tên giáo viên trong phần chọn gửi đơn phúc khảo
+SELECT tname FROM Teacher
 
 
 - Hiện điểm của một lớp theo tid lấy từ trang login và gid
-SELECT name, Test, Lab, Assignment, PE, FE FROM [Assessment-Student] where gid = 15
+SELECT asname, Test, Lab, Assignment, PE, FE FROM [Assessment-Student] where gid = 1
 - Hiện ra danh sách các lớp của từng giáo viên theo tid lấy từ trang login
-SELECT name FROM Group1 WHERE tid = 1
+SELECT gname FROM Group1 WHERE tid = 1
 
 - Sửa điểm của sinh viên theo sid
 INSERT INTO [dbo].[Assessment-Student]
@@ -16,7 +18,12 @@ INSERT INTO [dbo].[Assessment-Student]
 GO
 
 - Hiện điểm muốn phúc khảo 
-SELECT name FROM Assessment
+SELECT aname FROM Assessment
 
 - Chọn giáo viên bộ môn đấy
-SELECT name FROM Teacher
+SELECT tname FROM Teacher
+
+SELECT s.sid, s.sname, Point, a.aname FROM Student s INNER JOIN [Assessment-Student] e ON s.sid = e.sid
+						INNER JOIN Assessment a ON a.aid = e.aid
+
+SELECT aname FROM Assessment
