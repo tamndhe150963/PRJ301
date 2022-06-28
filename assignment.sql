@@ -6,7 +6,8 @@ SELECT tname FROM Teacher
 
 
 - Hiện điểm của một lớp theo tid lấy từ trang login và gid
-SELECT asname, Test, Lab, Assignment, PE, FE FROM [Assessment-Student] where gid = 1
+SELECT s.sid, s.sname, Point, a.aname FROM Student s INNER JOIN [Assessment-Student] e ON s.sid = e.sid
+						INNER JOIN Assessment a ON a.aid = e.aid where e.gid = 1
 - Hiện ra danh sách các lớp của từng giáo viên theo tid lấy từ trang login
 SELECT gname FROM Group1 WHERE tid = 1
 
